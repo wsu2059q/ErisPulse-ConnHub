@@ -20,10 +20,10 @@ class ConnHubConfig(BaseConfig):
             "ui": {"widget": "switch", "group": "api", "order": 2},
         },
     )
-    panel_enabled: bool = field(
+    view_enabled: bool = field(
         default=True,
         metadata={
-            "description": {"i18n": "ConnHub.panel_enabled", "default": "启用内置连接面板网页"},
+            "description": {"i18n": "ConnHub.view_enabled", "default": "注册 Dashboard 连接面板视图"},
             "ui": {"widget": "switch", "group": "api", "order": 3},
         },
     )

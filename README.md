@@ -33,9 +33,17 @@ ConnHub 是基于 [ErisPulse](https://github.com/ErisPulse/ErisPulse/) 架构开
 - 分组管理与定向广播
 - 连接关闭（受归属权限校验约束）
 - HTTP API 与 SSE 实时事件流
-- 内置监控面板网页
-
+- 
 要求 ErisPulse >= 2.10.0。
+
+---
+
+## 效果展示
+
+| `/conn list` | `/conn stats` |
+|:---:|:---:|
+| ![list-light](.github/assets/demo/list-light.png) | ![stats-light](.github/assets/demo/stats-light.png) |
+| ![list-dark](.github/assets/demo/list-dark.png) | ![stats-dark](.github/assets/demo/stats-dark.png) |
 
 ---
 
@@ -72,7 +80,6 @@ epsdk install ErisPulse-ConnHub
 | POST | `/connhub/api/broadcast` | 广播，body: `{"group": "...", "data": {...}, "timeout": 10}` |
 | POST | `/connhub/api/close` | 关闭，body: `{"id": "...", "force": false}` |
 | GET | `/connhub/events` | SSE 事件流（登记/注销/分组变化 + 周期快照） |
-| GET | `/connhub/panel` | 监控面板页面 |
 
 ---
 
@@ -98,7 +105,7 @@ print(result.sent, result.failed)
 [ConnHub]
 enabled = true                  # 是否启用模块
 api_enabled = true              # 启用 HTTP API 与 SSE
-panel_enabled = true            # 启用面板网页
+view_enabled = true             # 注册 Dashboard 视图
 allow_force_close = false       # 允许强制关闭其他模块归属的连接
 snapshot_interval_secs = 15     # 面板快照推送间隔秒数（0 关闭）
 broadcast_timeout = 10.0        # 广播单连接发送超时（秒）
@@ -109,7 +116,7 @@ top_max = 20                    # 列表单次展示上限
 |--------|------|--------|------|
 | `enabled` | bool | `true` | 是否启用模块 |
 | `api_enabled` | bool | `true` | 启用 HTTP API 与 SSE 事件流 |
-| `panel_enabled` | bool | `true` | 启用内置面板网页 |
+| `view_enabled` | bool | `true` | 注册 Dashboard 连接面板视图 |
 | `allow_force_close` | bool | `false` | 允许关闭其他模块归属的连接 |
 | `snapshot_interval_secs` | int | `15` | 面板快照推送间隔（秒，0 关闭） |
 | `broadcast_timeout` | float | `10.0` | 广播单连接发送超时（秒） |
@@ -120,7 +127,7 @@ top_max = 20                    # 列表单次展示上限
 ## 注意事项
 
 1. 连接关闭权归创建者模块：关闭其他模块的连接需开启 `allow_force_close`
-2. SSE 事件流地址为 `/connhub/events`，面板会自动重连
+2. 面板以 Dashboard 视图形式提供（需安装 Dashboard 模块），SSE 事件流地址 `/connhub/events`
 3. 模块卸载时其名下连接由框架自动关闭（2.10 行为）
 
 ---

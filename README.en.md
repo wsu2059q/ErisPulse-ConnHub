@@ -33,7 +33,7 @@ ConnHub is a connection management module for the [ErisPulse](https://github.com
 - Group management and targeted broadcast
 - Connection close (subject to ownership checks)
 - HTTP API and SSE live event stream
-- Built-in monitoring panel
+- Dashboard view: connections panel (live table + event stream)
 
 Requires ErisPulse >= 2.10.0.
 
@@ -72,7 +72,6 @@ All commands require framework master permission.
 | POST | `/connhub/api/broadcast` | Broadcast, body: `{"group": "...", "data": {...}, "timeout": 10}` |
 | POST | `/connhub/api/close` | Close, body: `{"id": "...", "force": false}` |
 | GET | `/connhub/events` | SSE stream (register/unregister/group changes + periodic snapshots) |
-| GET | `/connhub/panel` | Monitoring panel page |
 
 ---
 
@@ -98,7 +97,7 @@ print(result.sent, result.failed)
 [ConnHub]
 enabled = true                  # enable module
 api_enabled = true              # enable HTTP API and SSE
-panel_enabled = true            # enable panel page
+view_enabled = true             # register Dashboard view
 allow_force_close = false       # allow force-closing connections owned by other modules
 snapshot_interval_secs = 15     # panel snapshot interval in seconds (0 = off)
 broadcast_timeout = 10.0        # per-connection send timeout for broadcast (seconds)
@@ -109,7 +108,7 @@ top_max = 20                    # max entries per list
 |--------|------|---------|-------------|
 | `enabled` | bool | `true` | Enable module |
 | `api_enabled` | bool | `true` | Enable HTTP API and SSE stream |
-| `panel_enabled` | bool | `true` | Enable built-in panel page |
+| `view_enabled` | bool | `true` | Register Dashboard connections view |
 | `allow_force_close` | bool | `false` | Allow closing connections owned by other modules |
 | `snapshot_interval_secs` | int | `15` | Panel snapshot push interval (seconds, 0 = off) |
 | `broadcast_timeout` | float | `10.0` | Per-connection broadcast send timeout (seconds) |
@@ -120,7 +119,7 @@ top_max = 20                    # max entries per list
 ## Notes
 
 1. Close permission belongs to the owning module; closing other modules' connections requires `allow_force_close`
-2. The SSE stream is available at `/connhub/events`; the panel reconnects automatically
+2. The panel is provided as a Dashboard view (requires the Dashboard module); SSE stream at `/connhub/events`
 3. Connections owned by a module are closed by the framework on module unload (2.10 behavior)
 
 ---

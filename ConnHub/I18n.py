@@ -19,13 +19,13 @@ class ConnHubI18n(BaseI18n):
         ja="HTTP API と SSE イベントストリームを有効化",
         ru="Включить HTTP API и поток событий SSE",
     )
-    panel_enabled: I18nKey = I18nKey(
-        default="Enable built-in web panel",
-        zh_CN="启用内置连接面板网页",
-        zh_TW="啟用內建連線面板網頁",
-        en="Enable built-in web panel",
-        ja="内蔵ウェブパネルを有効化",
-        ru="Включить встроенную веб-панель",
+    view_enabled: I18nKey = I18nKey(
+        default="Register the Dashboard connections view",
+        zh_CN="注册 Dashboard 连接面板视图",
+        zh_TW="註冊 Dashboard 連線面板視圖",
+        en="Register the Dashboard connections view",
+        ja="Dashboard 接続パネルビューを登録",
+        ru="Регистрировать view панели соединений в Dashboard",
     )
     allow_force_close: I18nKey = I18nKey(
         default="Allow closing connections owned by other modules (skip ownership check)",
@@ -170,14 +170,6 @@ class ConnHubI18n(BaseI18n):
         en="Connection {id} left group {group}",
         ja="接続 {id} をグループ {group} から外しました",
         ru="Соединение {id} удалено из группы {group}",
-    )
-    panel_title: I18nKey = I18nKey(
-        default="ConnHub connections panel",
-        zh_CN="ConnHub 连接面板",
-        zh_TW="ConnHub 連線面板",
-        en="ConnHub connections panel",
-        ja="ConnHub 接続パネル",
-        ru="Панель соединений ConnHub",
     )
     invalid_kind: I18nKey = I18nKey(
         default="Unknown connection kind: {kind} (server/client/sse)",

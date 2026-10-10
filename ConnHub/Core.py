@@ -7,9 +7,9 @@ from ErisPulse.loaders import ModuleLoadStrategy
 
 from .Config import ConnHubConfig
 from .I18n import ConnHubI18n
-from .Panel import PANEL_HTML
 from .Service import VALID_KINDS, ConnHubService
 from .Visualizer import CardVisualizer
+from .Views import DashboardIntegration
 
 
 class Main(BaseModule):
@@ -22,6 +22,7 @@ class Main(BaseModule):
         self.logger = sdk.logger.get_child("ConnHub")
         self._service = ConnHubService(connections, self.logger)
         self._viz = CardVisualizer(sdk, self.logger)
+        self._dashboard = None
         self._snapshot_task = None
 
     @staticmethod
@@ -49,6 +50,9 @@ class Main(BaseModule):
         self._register_commands()
         if self.cfg.api_enabled:
             self._register_routes()
+        if self.cfg.view_enabled:
+            self._dashboard = DashboardIntegration(self.logger)
+            self._dashboard.setup()
         self._snapshot_task = self.spawn(self._snapshot_loop())
         self.logger.info(i18n.t("ConnHub.module_loaded", event=event))
         return True
@@ -58,6 +62,9 @@ class Main(BaseModule):
             self._snapshot_task.cancel()
             await asyncio.gather(self._snapshot_task, return_exceptions=True)
             self._snapshot_task = None
+        if self._dashboard is not None:
+            self._dashboard.teardown()
+            self._dashboard = None
         self.logger.info(i18n.t("ConnHub.module_unloaded", event=event))
         return True
 
@@ -259,14 +266,3 @@ class Main(BaseModule):
                 return
             while True:
                 await asyncio.sleep(60)
-
-        if self.cfg.panel_enabled:
-            @router.get("/panel")
-            async def panel():
-                return PANEL_HTML, 200, {"Content-Type": "text/html; charset=utf-8"}
-
-            router.register_home_entry(
-                name={"i18n": "ConnHub.panel_title", "default": "ConnHub 连接面板"},
-                url="/connhub/panel",
-                icon_svg='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="5" cy="12" r="2.5"/><circle cx="19" cy="6" r="2.5"/><circle cx="19" cy="18" r="2.5"/><path d="M7.5 12h4M13.5 10.8 16.5 7.6M13.5 13.2l3 3.2"/></svg>',
-            )
