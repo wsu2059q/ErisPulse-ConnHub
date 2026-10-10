@@ -34,7 +34,7 @@ class Main(BaseModule):
         return ModuleMeta(
             name="ConnHub",
             description="连接中心：查看/广播/关闭框架登记的 WS/SSE 连接，提供 HTTP API 与实时面板",
-            version="0.1.0",
+            version="0.1.1",
             author="ErisPulse-devs",
             group="运维",
             tags=["连接池", "广播", "SSE", "面板"],

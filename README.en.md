@@ -101,6 +101,8 @@ allow_force_close = false       # allow force-closing connections owned by other
 snapshot_interval_secs = 15     # panel snapshot interval in seconds (0 = off)
 broadcast_timeout = 10.0        # per-connection send timeout for broadcast (seconds)
 top_max = 20                    # max entries per list
+render_card = true              # render reports as image cards
+theme = "doodle"                # card style (doodle/editorial)
 ```
 
 | Option | Type | Default | Description |
@@ -111,6 +113,8 @@ top_max = 20                    # max entries per list
 | `snapshot_interval_secs` | int | `15` | Panel snapshot push interval (seconds, 0 = off) |
 | `broadcast_timeout` | float | `10.0` | Per-connection broadcast send timeout (seconds) |
 | `top_max` | int | `20` | Max entries per list |
+| `render_card` | bool | `true` | Render reports as image cards |
+| `theme` | str | `doodle` | Card style (doodle/editorial) |
 
 ---
 

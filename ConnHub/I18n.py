@@ -60,12 +60,12 @@ class ConnHubI18n(BaseI18n):
         ru="Рендер вывода команд в карточки через Takumi (иначе текст)",
     )
     theme: I18nKey = I18nKey(
-        default="Card color theme (auto = light/dark by time)",
-        zh_CN="卡片配色 (auto=按时间自动切深浅色)",
-        zh_TW="卡片配色 (auto=按時間自動切深淺色)",
-        en="Card color theme (auto = light/dark by time)",
-        ja="カード配色（auto=時間で自動切替）",
-        ru="Тема карточек (auto = светлая/тёмная по времени)",
+        default="Card style (doodle/editorial)",
+        zh_CN="卡片风格 (doodle 手绘涂鸦风 / editorial 编辑杂志风)",
+        zh_TW="卡片風格 (doodle 手繪塗鴉風 / editorial 編輯雜誌風)",
+        en="Card style (doodle/editorial)",
+        ja="カードスタイル（doodle/editorial）",
+        ru="Стиль карточек (doodle/editorial)",
     )
     module_loaded: I18nKey = I18nKey(
         default="ConnHub loaded: {event}",

@@ -109,6 +109,8 @@ allow_force_close = false       # 允许强制关闭其他模块归属的连接
 snapshot_interval_secs = 15     # 面板快照推送间隔秒数（0 关闭）
 broadcast_timeout = 10.0        # 广播单连接发送超时（秒）
 top_max = 20                    # 列表单次展示上限
+render_card = true              # 报表用 Takumi 渲染为卡片
+theme = "doodle"                # 卡片风格 (doodle/editorial)
 ```
 
 | 配置项 | 类型 | 默认值 | 说明 |
@@ -119,6 +121,8 @@ top_max = 20                    # 列表单次展示上限
 | `snapshot_interval_secs` | int | `15` | 面板快照推送间隔（秒，0 关闭） |
 | `broadcast_timeout` | float | `10.0` | 广播单连接发送超时（秒） |
 | `top_max` | int | `20` | 列表单次展示上限 |
+| `render_card` | bool | `true` | 报表用 Takumi 渲染为卡片 |
+| `theme` | str | `doodle` | 卡片风格 (doodle/editorial) |
 
 ---
 
