@@ -95,7 +95,6 @@ print(result.sent, result.failed)
 
 ```toml
 [ConnHub]
-enabled = true                  # enable module
 api_enabled = true              # enable HTTP API and SSE
 view_enabled = true             # register Dashboard view
 allow_force_close = false       # allow force-closing connections owned by other modules
@@ -106,7 +105,6 @@ top_max = 20                    # max entries per list
 
 | Option | Type | Default | Description |
 |--------|------|---------|-------------|
-| `enabled` | bool | `true` | Enable module |
 | `api_enabled` | bool | `true` | Enable HTTP API and SSE stream |
 | `view_enabled` | bool | `true` | Register Dashboard connections view |
 | `allow_force_close` | bool | `false` | Allow closing connections owned by other modules |

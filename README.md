@@ -103,7 +103,6 @@ print(result.sent, result.failed)
 
 ```toml
 [ConnHub]
-enabled = true                  # 是否启用模块
 api_enabled = true              # 启用 HTTP API 与 SSE
 view_enabled = true             # 注册 Dashboard 视图
 allow_force_close = false       # 允许强制关闭其他模块归属的连接
@@ -114,7 +113,6 @@ top_max = 20                    # 列表单次展示上限
 
 | 配置项 | 类型 | 默认值 | 说明 |
 |--------|------|--------|------|
-| `enabled` | bool | `true` | 是否启用模块 |
 | `api_enabled` | bool | `true` | 启用 HTTP API 与 SSE 事件流 |
 | `view_enabled` | bool | `true` | 注册 Dashboard 连接面板视图 |
 | `allow_force_close` | bool | `false` | 允许关闭其他模块归属的连接 |

@@ -42,10 +42,6 @@ class Main(BaseModule):
         )
 
     async def on_load(self, event: dict) -> bool:
-        if not self.cfg.enabled:
-            self.logger.info("连接中心未启用（enabled=false）")
-            return True
-
         self._register_lifecycle()
         self._register_commands()
         if self.cfg.api_enabled:

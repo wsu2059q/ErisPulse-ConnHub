@@ -3,14 +3,6 @@ from ErisPulse.Core.Bases import BaseI18n, I18nKey
 
 class ConnHubI18n(BaseI18n):
 
-    enabled: I18nKey = I18nKey(
-        default="Enable module",
-        zh_CN="是否启用模块",
-        zh_TW="是否啟用模組",
-        en="Enable module",
-        ja="モジュールを有効化",
-        ru="Включить модуль",
-    )
     api_enabled: I18nKey = I18nKey(
         default="Enable HTTP API and SSE event stream",
         zh_CN="启用 HTTP API 与 SSE 事件流",
