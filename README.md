@@ -75,11 +75,11 @@ epsdk install ErisPulse-ConnHub
 
 | 方法 | 路径 | 说明 |
 |------|------|------|
-| GET | `/connhub/api/connections` | 连接列表 |
-| GET | `/connhub/api/stats` | 连接统计 |
-| POST | `/connhub/api/broadcast` | 广播，body: `{"group": "...", "data": {...}, "timeout": 10}` |
-| POST | `/connhub/api/close` | 关闭，body: `{"id": "...", "force": false}` |
-| GET | `/connhub/events` | SSE 事件流（登记/注销/分组变化 + 周期快照） |
+| GET | `/ConnHub/api/connections` | 连接列表 |
+| GET | `/ConnHub/api/stats` | 连接统计 |
+| POST | `/ConnHub/api/broadcast` | 广播，body: `{"group": "...", "data": {...}, "timeout": 10}` |
+| POST | `/ConnHub/api/close` | 关闭，body: `{"id": "...", "force": false}` |
+| GET | `/ConnHub/events` | SSE 事件流（登记/注销/分组变化 + 周期快照） |
 
 ---
 
@@ -125,7 +125,7 @@ top_max = 20                    # 列表单次展示上限
 ## 注意事项
 
 1. 连接关闭权归创建者模块：关闭其他模块的连接需开启 `allow_force_close`
-2. 面板以 Dashboard 视图形式提供（需安装 Dashboard 模块），SSE 事件流地址 `/connhub/events`
+2. 面板以 Dashboard 视图形式提供（需安装 Dashboard 模块），SSE 事件流地址 `/ConnHub/events`
 3. 模块卸载时其名下连接由框架自动关闭（2.10 行为）
 
 ---

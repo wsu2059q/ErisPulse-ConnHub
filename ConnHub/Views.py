@@ -80,8 +80,8 @@ var ConnHubView = {
 
     refresh: function() {
         var self = this;
-        this._fetch('/connhub/api/stats').then(function(stats) { self.renderStats(stats); });
-        this._fetch('/connhub/api/connections').then(function(conns) { self.renderRows(conns || []); });
+        this._fetch('/ConnHub/api/stats').then(function(stats) { self.renderStats(stats); });
+        this._fetch('/ConnHub/api/connections').then(function(conns) { self.renderRows(conns || []); });
     },
 
     renderStats: function(stats) {
@@ -123,7 +123,7 @@ var ConnHubView = {
 
     connectSse: function() {
         var self = this;
-        try { this.es = new EventSource('/connhub/events'); } catch(e) { return; }
+        try { this.es = new EventSource('/ConnHub/events'); } catch(e) { return; }
         this.es.onmessage = function(ev) {
             var data;
             try { data = JSON.parse(ev.data); } catch(e) { return; }

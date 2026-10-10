@@ -67,11 +67,11 @@ All commands require framework master permission.
 
 | Method | Path | Description |
 |--------|------|-------------|
-| GET | `/connhub/api/connections` | Connection list |
-| GET | `/connhub/api/stats` | Connection stats |
-| POST | `/connhub/api/broadcast` | Broadcast, body: `{"group": "...", "data": {...}, "timeout": 10}` |
-| POST | `/connhub/api/close` | Close, body: `{"id": "...", "force": false}` |
-| GET | `/connhub/events` | SSE stream (register/unregister/group changes + periodic snapshots) |
+| GET | `/ConnHub/api/connections` | Connection list |
+| GET | `/ConnHub/api/stats` | Connection stats |
+| POST | `/ConnHub/api/broadcast` | Broadcast, body: `{"group": "...", "data": {...}, "timeout": 10}` |
+| POST | `/ConnHub/api/close` | Close, body: `{"id": "...", "force": false}` |
+| GET | `/ConnHub/events` | SSE stream (register/unregister/group changes + periodic snapshots) |
 
 ---
 
@@ -117,7 +117,7 @@ top_max = 20                    # max entries per list
 ## Notes
 
 1. Close permission belongs to the owning module; closing other modules' connections requires `allow_force_close`
-2. The panel is provided as a Dashboard view (requires the Dashboard module); SSE stream at `/connhub/events`
+2. The panel is provided as a Dashboard view (requires the Dashboard module); SSE stream at `/ConnHub/events`
 3. Connections owned by a module are closed by the framework on module unload (2.10 behavior)
 
 ---
